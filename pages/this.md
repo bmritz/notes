@@ -1,5 +1,7 @@
 public:: true
+date:: "2023-02-03"
 
-- date:: "2023-02-03"
+-
+-
 - this is a new page2
 -
