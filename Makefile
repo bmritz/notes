@@ -1,3 +1,6 @@
+REQUIRED := mkdir curl ls grep xargs
+$(foreach bin,$(REQUIRED),\
+	$(if $(shell command -v $(bin) 2> /dev/null),,$(error Please install `$(bin)`)))
 
 
 UNAME_S := $(shell uname -s)
@@ -19,10 +22,22 @@ bin/hugo:
 	mkdir -p bin
 	curl -L https://github.com/gohugoio/hugo/releases/download/v0.111.2/hugo_0.111.2_$(OS_ARCH).tar.gz | tar -xvzf - -C $(dir $@)
 
-journals: $(wildcard journals/**/*)
-pages: $(wildcard pages/*)
-logseq: $(wildcard logseq/**/*)
 
-content: binaries/logseq-export $(wildcard journals/*) $(wildcard pages/*) $(wildcard logseq/*)
-	$< -blogFolder $@ -graphPath .
+# logseq: $(wildcard logseq/**/*)
 
+content: bin/logseq-export $(wildcard logseq/**/*)
+	$< -blogFolder $@ -graphPath logseq
+
+content/_index.md: bin/logseq-export logseq/pages/_index.md
+	$< -blogFolder $(dir $@) -graphPath logseq
+	# delete everything but _index.md and the dirs
+	ls $(dir $@) | grep -v -e '_index.md' -e posts -e about -e logseq-images | xargs -I {} rm content/{}
+
+content/posts: bin/logseq-export $(wildcard logseq/**/*)
+	$< -blogFolder $@ -graphPath logseq
+	# delete the _index.md file
+	rm $@/_index.md
+
+
+serve: bin/hugo
+	$< serve -D

@@ -1,7 +1,6 @@
 ---
-title: ""
-date: 2023-03-07T12:24:33-05:00
-draft: true
+public: "true"
+title: "_index"
 ---
 
-Lorem ipsum dolor sit amet
+A different approach than most.
