@@ -25,7 +25,7 @@ jobs:
       #     version: nightly@sha256:89e32c07eee2fac2506ddbdee4d3fbcd35d2c1ea1020fccc6b7464f4f146c35f
 
       - name: make the public page
-        run: make public
+        run: make -o export/publicExport.zip public
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@4.1.9
