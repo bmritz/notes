@@ -42,7 +42,8 @@ content/_index.md: bin/logseq-export logseq/pages/_index.md
 content/posts content/assets: export/publicExport.zip
 	unzip -d $@ $< 
 	mv $@/pages/* $@ && rm -rf $@/pages
-	mv $@/assets content/assets
+	mv -f $@/assets/* content/assets/
+	rm -rf $@/assets
 	# grep $@ | xargs sed -i '' 's#{{< ref "/posts/#{{< ref "/posts/#g'
 	sed -i '' 's#{{< ref "/pages/#{{< ref "/posts/#g' content/posts/*
 
