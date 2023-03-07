@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>_index on Brian Michael Ritz</title>
+    <link>https://bmritz.github.io/notes/</link>
+    <description>Recent content in _index on Brian Michael Ritz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://bmritz.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mar 6th, 2023</title>
+      <link>https://bmritz.github.io/notes/posts/mar-6th-2023/</link>
+      <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmritz.github.io/notes/posts/mar-6th-2023/</guid>
+      <description>Hello World!
+see Contents
+laksdjfsallsjdf</description>
+    </item>
+    
+    <item>
+      <title>Contents</title>
+      <link>https://bmritz.github.io/notes/posts/contents/</link>
+      <pubDate>Sat, 04 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmritz.github.io/notes/posts/contents/</guid>
+      <description>this
+that</description>
+    </item>
+    
+    <item>
+      <title>this</title>
+      <link>https://bmritz.github.io/notes/posts/this/</link>
+      <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://bmritz.github.io/notes/posts/this/</guid>
+      <description>this is a new page2</description>
+    </item>
+    
+  </channel>
+</rss>
