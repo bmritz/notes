@@ -1,4 +1,4 @@
-REQUIRED := mkdir curl ls grep xargs
+REQUIRED := mkdir curl ls grep xargs unzip sed
 $(foreach bin,$(REQUIRED),\
 	$(if $(shell command -v $(bin) 2> /dev/null),,$(error Please install `$(bin)`)))
 
@@ -37,6 +37,13 @@ content/posts: bin/logseq-export $(wildcard logseq/**/*)
 	$< -blogFolder $@ -graphPath logseq
 	# delete the _index.md file
 	rm $@/_index.md
+
+
+content/posts: export/publicExport.zip
+	unzip -d $@ $< 
+	mv $@/pages/* $@ && rm -rf $@/pages
+	# grep $@ | xargs sed -i '' 's#{{< ref "/posts/#{{< ref "/posts/#g'
+	sed -i '' 's#{{< ref "/pages/#{{< ref "/posts/#g' content/posts/*
 
 
 serve: bin/hugo
