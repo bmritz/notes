@@ -46,6 +46,7 @@ content/posts content/assets: export/publicExport.zip
 	rm -rf $@/assets
 	# grep $@ | xargs sed -i '' 's#{{< ref "/posts/#{{< ref "/posts/#g'
 	sed -i '' 's#{{< ref "/pages/#{{< ref "/posts/#g' content/posts/*
+	sed -i '' 's#/assets/#assets/#g' content/posts/*
 
 public: bin/hugo content/posts content/posts
 	$< -t etch
