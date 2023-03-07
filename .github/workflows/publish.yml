@@ -27,6 +27,9 @@ jobs:
       - name: make the public page
         run: make -o export/publicExport.zip public
 
+      - name: Add .nojekyll file
+        run: touch public/.nojekyll
+
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@4.1.9
         with:
