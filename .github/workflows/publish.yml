@@ -17,21 +17,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Logseq Publish
-        uses: pengx17/logseq-publish@0.1.7
-        with:
-          dest: www
-          # Temporary until master gets heading block urls
-          version: nightly@sha256:89e32c07eee2fac2506ddbdee4d3fbcd35d2c1ea1020fccc6b7464f4f146c35f
+      # - name: Logseq Publish
+      #   uses: pengx17/logseq-publish@0.1.7
+      #   with:
+      #     dest: www
+      #     # Temporary until master gets heading block urls
+      #     version: nightly@sha256:89e32c07eee2fac2506ddbdee4d3fbcd35d2c1ea1020fccc6b7464f4f146c35f
 
-      - name: Add .nojekyll file
-        run: touch www/.nojekyll
+      - name: make the public page
+        run: make public
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@4.1.9
         with:
           branch: gh-pages
-          folder: www
+          folder: public
           clean: true
           clean-exclude: |
             CNAME

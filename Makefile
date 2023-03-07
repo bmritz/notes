@@ -33,18 +33,21 @@ content/_index.md: bin/logseq-export logseq/pages/_index.md
 	# delete everything but _index.md and the dirs
 	ls $(dir $@) | grep -v -e '_index.md' -e posts -e about -e logseq-images | xargs -I {} rm content/{}
 
-content/posts: bin/logseq-export $(wildcard logseq/**/*)
-	$< -blogFolder $@ -graphPath logseq
-	# delete the _index.md file
-	rm $@/_index.md
+# content/posts: bin/logseq-export $(wildcard logseq/**/*)
+# 	$< -blogFolder $@ -graphPath logseq
+# 	# delete the _index.md file
+# 	rm $@/_index.md
 
 
-content/posts: export/publicExport.zip
+content/posts content/assets: export/publicExport.zip
 	unzip -d $@ $< 
 	mv $@/pages/* $@ && rm -rf $@/pages
+	mv $@/assets content/assets
 	# grep $@ | xargs sed -i '' 's#{{< ref "/posts/#{{< ref "/posts/#g'
 	sed -i '' 's#{{< ref "/pages/#{{< ref "/posts/#g' content/posts/*
 
+public: bin/hugo content/posts
+	$<
 
 serve: bin/hugo
-	$< serve -D
+	$< serve
