@@ -39,16 +39,18 @@ content/_index.md: bin/logseq-export logseq/pages/_index.md
 # 	rm $@/_index.md
 
 
-content/posts content/assets: export/publicExport.zip
-	unzip -d $@ $< 
-	mv $@/pages/* $@ && rm -rf $@/pages
-	mv -f $@/assets/* content/assets/
-	rm -rf $@/assets
-	# grep $@ | xargs sed -i '' 's#{{< ref "/posts/#{{< ref "/posts/#g'
+content/posts assets: export/publicExport.zip
+	unzip -d content $< 
+	mv content/pages $@
+	# mv $@/pages/* $@ && rm -rf $@/pages
+	# mv -f $@/assets/* content/assets/
+	# rm -rf $@/assets
+	# # grep $@ | xargs sed -i '' 's#{{< ref "/posts/#{{< ref "/posts/#g'
 	sed -i '' 's#{{< ref "/pages/#{{< ref "/posts/#g' content/posts/*
-	sed -i '' 's#/assets/#assets/#g' content/posts/*
+	# sed -i '' 's#/assets/#assets/#g' content/posts/*
+	# mv content/assets content/posts/
 
-public: bin/hugo content/posts content/posts
+public: bin/hugo content/posts/* assets/*
 	$< -t etch
 
 serve: bin/hugo
