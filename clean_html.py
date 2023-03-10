@@ -76,13 +76,15 @@ ACTIONS = {
     'add-stylesheet-links': add_css_stylesheets,
 }
 
+  <!-- <meta content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;" http-equiv="content-security-policy"/> -->
+
+
 FIND = 'find_all'
 SELECT = 'select'
 SELF = 'self'
 SELECTORS = {
     # selector functions should return an iterable
     SELECT: lambda soup, selector: soup.select(selector),
-    # "select-one": lambda soup, selector: soup.select_one(selector),
     FIND: lambda soup, **kwargs: soup.find_all(**kwargs),
     SELF: lambda soup: [soup],
 }
@@ -94,7 +96,11 @@ WORK = [
         'selector': {'name': SELECT, 'kwargs': {'selector': 'style'}}, 
         'action': {'name': 'extract'}
     },
-
+    {
+        # remove the meta directive for content security policy
+        'selector': {'name': FIND, 'kwargs': {'name': 'meta', "attrs": {"http-equiv": "content-security-policy"}}}, 
+        'action': {'name': 'extract'}
+    },
     {
         # add links to css stylesheets
         'selector': {'name': SELF}, 
