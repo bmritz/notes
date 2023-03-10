@@ -208,16 +208,17 @@ def execute(work: Work, file: File):
     return file
 
 
-def read_files(dir: str) -> Generator[File, None, None]:
-    for file_ in os.listdir(dir):
-        path = pathlib.Path(dir+'/'+file_)
-        with open(path, 'rb') as fil:
-            soup = bs4.BeautifulSoup(fil.read())
-        yield File(path=path, soup=soup)
+def read_files(dir: pathlib.Path) -> Generator[File, None, None]:
+    """Yield the files from the directory, skipping subdirectories."""
+    for path in dir.iterdir():
+        if path.isfile():
+            with open(path, 'rb') as fil:
+                soup = bs4.BeautifulSoup(fil.read())
+            yield File(path=path, soup=soup)
 
 def process_directory(dir: str):
 
-    for file in read_files(dir):
+    for file in read_files(pathlib.Path(dir)):
         if not file.soup:
             logger.info(f"skipped {file.path}")
             continue
