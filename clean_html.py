@@ -38,11 +38,10 @@ def change_links(a):
 # add in css
 
 def add_css_stylesheet(soup, css_path: str):
-    if soup is not None and hasattr(soup, 'new_tag') and soup.new_tag is not None:
-        logger.info("Adding stylesheet.")
-        style_tag = soup.new_tag('link', attrs=dict(href=css_path, rel="stylesheet", type="text/css"))
-        head = soup.select_one('head')
-        head.append(style_tag)
+    logger.info("Adding stylesheet.")
+    style_tag = soup.new_tag('link', attrs=dict(href=css_path, rel="stylesheet", type="text/css"))
+    head = soup.select_one('head')
+    head.append(style_tag)
 
 def add_css_stylesheets(soup):
     css_paths = ["static/css/export.css","static/css/custom.css", "static/css/style.css", "static/css/tabler-icons.min.css"]
@@ -213,7 +212,7 @@ def read_files(dir: pathlib.Path) -> Generator[File, None, None]:
     for path in dir.iterdir():
         if path.is_file():
             with open(path, 'rb') as fil:
-                soup = bs4.BeautifulSoup(fil.read())
+                soup = bs4.BeautifulSoup(fil.read(), features="html.parser")
             yield File(path=path, soup=soup)
 
 def process_directory(directory: str):
