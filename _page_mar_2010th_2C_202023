@@ -14,11 +14,11 @@
   <meta content="static/img/logo.png" property="og:image"/>
   <meta property="og:description"/>
   <title>
-   Mar 6th, 2023
+   Mar 10th, 2023
   </title>
   <meta property="og:site_name"/>
   <meta/>
-  <link href="http://host.docker.internal:8000/index.html#/page/mar%206th%2C%202023" rel="canonical"/>
+  <link href="http://host.docker.internal:8000/index.html#/page/mar%2010th%2C%202023" rel="canonical"/>
   <meta content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;" http-equiv="content-security-policy"/>
   <link href="static/css/export.css" rel="stylesheet" type="text/css"/>
   <link href="static/css/custom.css" rel="stylesheet" type="text/css"/>
@@ -133,8 +133,8 @@
               <div class="ls-page-title flex-1 flex-row w-full">
                <h1 class="page-title flex cursor-pointer gap-1 w-full title">
                 <div class="page-title-sizer-wrapper relative">
-                 <span class="title block" data-ref="mar 6th, 2023" data-value="">
-                  Mar 6th, 2023
+                 <span class="title block" data-ref="mar 10th, 2023" data-value="">
+                  Mar 10th, 2023
                  </span>
                 </div>
                </h1>
@@ -144,21 +144,21 @@
               <div>
                <div class="page-blocks-inner" style="margin-left:-20px">
                 <div>
-                 <div id="mar 6th, 2023">
+                 <div id="mar 10th, 2023">
                   <div class="content">
                    <div class="blocks-container flex-1">
-                    <div id="lazy-blocks-cae0aa0d-25c2-4017-8582-c4c05ff71535">
+                    <div id="lazy-blocks-aa33299d-db97-4197-b20e-adecb17e1740">
                      <div>
-                      <div blockid="640b6b16-a57e-4027-8a47-a32c2a61ee3d" class="ls-block 640b6b16-a57e-4027-8a47-a32c2a61ee3d" data-refs="[]" data-refs-self="[]" haschild="false" id="ls-block-1-640b6b16-a57e-4027-8a47-a32c2a61ee3d" level="1">
+                      <div blockid="640b6e3a-6119-409b-915a-5405b751cecc" class="ls-block 640b6e3a-6119-409b-915a-5405b751cecc" data-refs="[]" data-refs-self="[]" haschild="false" id="ls-block-1-640b6e3a-6119-409b-915a-5405b751cecc" level="1">
                        <div class="flex flex-row pr-2">
                         <div class="block-control-wrap mr-1 flex flex-row items-center sm:mr-2">
-                         <a class="block-control" id="control-640b6b16-a57e-4027-8a47-a32c2a61ee3d">
+                         <a class="block-control" id="control-640b6e3a-6119-409b-915a-5405b751cecc">
                           <span class="control-hide sf-hidden">
                           </span>
                          </a>
                          <a>
-                          <span blockid="640b6b16-a57e-4027-8a47-a32c2a61ee3d" class="bullet-container cursor" draggable="true" id="dot-640b6b16-a57e-4027-8a47-a32c2a61ee3d">
-                           <span blockid="640b6b16-a57e-4027-8a47-a32c2a61ee3d" class="bullet">
+                          <span blockid="640b6e3a-6119-409b-915a-5405b751cecc" class="bullet-container cursor" draggable="true" id="dot-640b6e3a-6119-409b-915a-5405b751cecc">
+                           <span blockid="640b6e3a-6119-409b-915a-5405b751cecc" class="bullet">
                            </span>
                           </span>
                          </a>
@@ -166,12 +166,9 @@
                         <div class="flex flex-col block-content-wrapper">
                          <div class="flex flex-row">
                           <div class="flex-1 w-full" style="display:flex">
-                           <div blockid="640b6b16-a57e-4027-8a47-a32c2a61ee3d" class="block-content inline" data-type="default" id="block-content-640b6b16-a57e-4027-8a47-a32c2a61ee3d" style="width:100%">
+                           <div blockid="640b6e3a-6119-409b-915a-5405b751cecc" class="block-content inline" data-type="default" id="block-content-640b6e3a-6119-409b-915a-5405b751cecc" style="width:100%">
                             <div class="flex flex-row justify-between block-content-inner">
                              <div class="flex-1 w-full">
-                              <span class="inline">
-                               Hello World!
-                              </span>
                              </div>
                             </div>
                            </div>
@@ -189,6 +186,16 @@
                  </div>
                 </div>
                </div>
+              </div>
+             </div>
+            </div>
+            <div class="mt-10" id="today-queries">
+             <div class="lazy-visibility" style="min-height:24px">
+              <div class="fade-enter fade-enter-active">
+              </div>
+             </div>
+             <div class="lazy-visibility" style="min-height:24px">
+              <div class="fade-enter fade-enter-active">
               </div>
              </div>
             </div>
