@@ -200,7 +200,8 @@ def execute(work: Work, file: File):
         selector = get_selector(piece_of_work)
         action = get_action(piece_of_work)
         for el in selector(file.soup):
-            action(el)
+            if el is not None:
+                action(el)
     logger.info(f"processed {file.path}")
     return file
 
@@ -218,8 +219,10 @@ def process_directory(dir: str):
         if not file.soup:
             logger.info(f"skipped {file.path}")
             continue
-            # print(file.soup )
+        
+        # modifies the file "in place"
         execute(Work(worklist=WORK), file)
+        
         file.save()
 
 
