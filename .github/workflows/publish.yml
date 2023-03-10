@@ -29,8 +29,8 @@ jobs:
           key: tempcache-pub
 
 
-      - if: ${{ steps.cache-published-files.outputs.cache-hit != 'true' }}
-        name: Logseq Publish
+      - name: Logseq Publish
+        # if: ${{ steps.cache-published-files.outputs.cache-hit != 'true' }}
         uses: pengx17/logseq-publish@0.1.7
         with:
           dest: www
