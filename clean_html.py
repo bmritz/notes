@@ -37,17 +37,17 @@ def change_links(a):
 
 # add in css
 
-def add_css_stylesheet(soup, css_path):
+def add_css_stylesheet(soup, css_path: str):
     if soup is not None and hasattr(soup, 'new_tag') and soup.new_tag is not None:
-        logger.info("Adding stylesheet")
+        logger.info("Adding stylesheet.")
         style_tag = soup.new_tag('link', attrs=dict(href=css_path, rel="stylesheet", type="text/css"))
         head = soup.select_one('head')
         head.append(style_tag)
 
 def add_css_stylesheets(soup):
-    paths = ["static/css/export.css","static/css/custom.css", "static/css/style.css", "static/css/tabler-icons.min.css"]
-    for path in paths:
-        add_css_stylesheet(soup, path)
+    css_paths = ["static/css/export.css","static/css/custom.css", "static/css/style.css", "static/css/tabler-icons.min.css"]
+    for css_path in css_paths:
+        add_css_stylesheet(soup, css_path=css_path)
 
 @dataclass
 class Selector:
@@ -202,7 +202,7 @@ def execute(work: Work, file: File):
         selector = get_selector(piece_of_work)
         action = get_action(piece_of_work)
         for el in selector(file.soup):
-            if el is not None:
+            if el:
                 action(el)
     logger.info(f"processed {file.path}")
     return file
@@ -216,9 +216,9 @@ def read_files(dir: pathlib.Path) -> Generator[File, None, None]:
                 soup = bs4.BeautifulSoup(fil.read())
             yield File(path=path, soup=soup)
 
-def process_directory(dir: str):
+def process_directory(directory: str):
 
-    for file in read_files(pathlib.Path(dir)):
+    for file in read_files(pathlib.Path(directory)):
         if not file.soup:
             logger.info(f"skipped {file.path}")
             continue
