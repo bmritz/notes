@@ -72,7 +72,7 @@ ACTIONS = {
     "extract": lambda el: el.extract(),
     "append-class": lambda el, class_: el.attrs['class'].append(class_),
     'change-links': change_links,
-    'add-stylesheet-links': add_css_stylesheet,
+    'add-stylesheet-links': add_css_stylesheets,
 }
 
 FIND = 'find_all'
