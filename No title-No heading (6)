@@ -1,0 +1,33 @@
+<html><!--
+ Page saved with SingleFile 
+ url: http://host.docker.internal:8000/static/js 
+ saved date: Fri Mar 10 2023 14:36:21 GMT+0000 (Coordinated Universal Time)
+--><head><meta charset="utf-8"><link rel="canonical" href="http://host.docker.internal:8000/static/js"><meta http-equiv="content-security-policy" content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head><body><pre><a href="http://host.docker.internal:8000/static">..</a>
+<a href="http://host.docker.internal:8000/static/js/code-editor.js">code-editor.js</a>
+<a href="http://host.docker.internal:8000/static/js/excalidraw-assets">excalidraw-assets</a>
+<a href="http://host.docker.internal:8000/static/js/excalidraw.js">excalidraw.js</a>
+<a href="http://host.docker.internal:8000/static/js/highlight.min.js">highlight.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/interact.min.js">interact.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/katex.min.js">katex.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/lightning-fs.min.js">lightning-fs.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/lsplugin.core.js">lsplugin.core.js</a>
+<a href="http://host.docker.internal:8000/static/js/lsplugin.core.js.LICENSE.txt">lsplugin.core.js.LICENSE.txt</a>
+<a href="http://host.docker.internal:8000/static/js/lsplugin.user.js">lsplugin.user.js</a>
+<a href="http://host.docker.internal:8000/static/js/magic_portal.js">magic_portal.js</a>
+<a href="http://host.docker.internal:8000/static/js/main.js">main.js</a>
+<a href="http://host.docker.internal:8000/static/js/manifest.edn">manifest.edn</a>
+<a href="http://host.docker.internal:8000/static/js/marked.min.js">marked.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/mhchem.min.js">mhchem.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/module-loader.edn">module-loader.edn</a>
+<a href="http://host.docker.internal:8000/static/js/module-loader.json">module-loader.json</a>
+<a href="http://host.docker.internal:8000/static/js/pdfjs">pdfjs</a>
+<a href="http://host.docker.internal:8000/static/js/photoswipe.js">photoswipe.js</a>
+<a href="http://host.docker.internal:8000/static/js/preload.js">preload.js</a>
+<a href="http://host.docker.internal:8000/static/js/reveal.min.js">reveal.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/shepherd.min.js">shepherd.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/swiped-events.min.js">swiped-events.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/tabler.min.js">tabler.min.js</a>
+<a href="http://host.docker.internal:8000/static/js/tldraw.js">tldraw.js</a>
+<a href="http://host.docker.internal:8000/static/js/tldraw.js.map">tldraw.js.map</a>
+<a href="http://host.docker.internal:8000/static/js/worker.js">worker.js</a>
+</pre></body></html>

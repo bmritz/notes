@@ -1,0 +1,10 @@
+<html><!--
+ Page saved with SingleFile 
+ url: http://host.docker.internal:8000 
+ saved date: Fri Mar 10 2023 14:35:20 GMT+0000 (Coordinated Universal Time)
+--><head><meta charset="utf-8"><link rel="canonical" href="http://host.docker.internal:8000"><meta http-equiv="content-security-policy" content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"><style>img[src="data:,"],source[src="data:,"]{display:none!important}</style></head><body><pre><a href="http://host.docker.internal:8000/404.html">404.html</a>
+<a href="http://host.docker.internal:8000/assets">assets</a>
+<a href="http://host.docker.internal:8000/index.html">index.html</a>
+<a href="http://host.docker.internal:8000/static">static</a>
+<a href="http://host.docker.internal:8000/trace.zip">trace.zip</a>
+</pre></body></html>
