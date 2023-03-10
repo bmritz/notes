@@ -84,7 +84,7 @@ SELECTORS = {
     SELECT: lambda soup, selector: soup.select(selector),
     # "select-one": lambda soup, selector: soup.select_one(selector),
     FIND: lambda soup, **kwargs: soup.find_all(**kwargs),
-    SELF: lambda soup: soup,
+    SELF: lambda soup: [soup],
 }
 
 
@@ -221,9 +221,9 @@ def process_directory(directory: str):
         if not file.soup:
             logger.info(f"skipped {file.path}")
             continue
-        
+        logger.info(f"Beginning to process: {file.path}")
         # modifies the file "in place"
-        execute(Work(worklist=WORK), file)
+        execute(work=Work(worklist=WORK), file=file)
         
         file.save()
 
