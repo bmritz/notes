@@ -76,9 +76,6 @@ ACTIONS = {
     'add-stylesheet-links': add_css_stylesheets,
 }
 
-  <!-- <meta content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;" http-equiv="content-security-policy"/> -->
-
-
 FIND = 'find_all'
 SELECT = 'select'
 SELF = 'self'
