@@ -17,6 +17,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+
+      - name: Cache published files (temp)
+        id: cache-published-files
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-published-files
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: www
+          key: tempcache
+
+
       - name: Logseq Publish
         uses: pengx17/logseq-publish@0.1.7
         with:
@@ -53,7 +65,7 @@ jobs:
       - name: Snapshot each page
         uses: addnab/docker-run-action@v3
         with:
-            image: capsulecode/singlefile@f307b2b87df68835c5397b7f7e77a55af8e1abfea140cbc15c49d6d89e1b4b52
+            image: capsulecode/singlefile:latest
             options: -v ${{ github.workspace }}:/singlefiles --add-host host.docker.internal:host-gateway 
             # no-sandbox comes from here: https://github.com/jessfraz/dockerfiles/issues/350#issuecomment-1430586061
             run:  ./single-file --browser-executable-path /usr/bin/chromium-browser --browser-args=["--no-sandbox"] --block-scripts true --remove-unused-styles true --move-styles-in-head true --browser-wait-until=domcontentloaded --browser-wait-delay=30000 --crawl-links=true --crawl-max-depth=5 --crawl-inner-links-only --crawl-replace-urls=false --crawl-remove-url-fragment=false --output-directory=/singlefiles/www2 --dump-content=false --filename-template "{page-title}-{page-heading}" "http://host.docker.internal:8000"
