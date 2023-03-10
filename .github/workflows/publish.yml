@@ -18,18 +18,19 @@ jobs:
       - uses: actions/checkout@v3
 
 
-      # - name: Cache published files (temp)
-      #   id: cache-published-files
-      #   uses: actions/cache@v3
-      #   env:
-      #     cache-name: cache-published-files
-      #   with:
-      #     # npm cache files are stored in `~/.npm` on Linux/macOS
-      #     path: www
-      #     key: tempcache-published
+      - name: Cache published files (temp)
+        id: cache-published-files
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-published-files
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: www
+          key: tempcache-pub
 
 
-      - name: Logseq Publish
+      - if: ${{ steps.cache-published-files.outputs.cache-hit != 'true' }}
+        name: Logseq Publish
         uses: pengx17/logseq-publish@0.1.7
         with:
           dest: www
@@ -59,7 +60,7 @@ jobs:
               "txt": "text/plain",
               "xml": "text/xml"
             }
-      - run: mkdir www2 && mkdir -p www2/static/css && cp www/static/css/* www2/static/css
+      - run: mkdir www2 && mkdir -p www2/static/css && cp -r www/static/css/* www2/static/css
 
       # - name: Cache snapshots files (temp)
       #   id: cache-snapshot-files
