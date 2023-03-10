@@ -182,8 +182,23 @@ class File:
     path: pathlib.Path
     soup: bs4.BeautifulSoup
 
+
+    def get_save_path(self):
+        """Return the path to save the file."""
+        # split on the url fragment, and return the last part if it exists
+        parts = self.path.split("#")
+        if len(parts) == 1:
+            return self.path
+        path = parts[1]
+        if path == '/':
+            path = 'index.html'
+        directory = self.path.parent
+        return directory / path
+
     def save(self):
-        with open(self.path, "w") as fil:
+        save_path = self.get_save_path()
+
+        with open(save_path, "w") as fil:
             fil.write(str(self.soup.prettify()))
         logger.info(f"Saved to {self.path}")
             
