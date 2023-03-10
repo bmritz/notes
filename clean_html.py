@@ -47,8 +47,6 @@ def add_css_stylesheets(soup):
     for path in paths:
         add_css_stylesheet(soup, path)
 
-add_css_stylesheets(s)
-
 @dataclass
 class Selector:
     name: str
@@ -224,4 +222,6 @@ def process_directory(dir: str):
         execute(Work(worklist=WORK), file)
         file.save()
 
+
+logging.basicConfig(level=logging.DEBUG)
 process_directory('www2')
