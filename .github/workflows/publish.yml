@@ -80,7 +80,7 @@ jobs:
             image: capsulecode/singlefile:latest
             options: -v ${{ github.workspace }}:/singlefiles --add-host host.docker.internal:host-gateway --cap-add=SYS_ADMIN --user 1001 
             # no-sandbox comes from here: https://github.com/jessfraz/dockerfiles/issues/350#issuecomment-1430586061 
-            run: ./single-file --browser-executable-path /usr/bin/chromium-browser --filename-conflict-action=skip --block-scripts true --remove-unused-styles true --move-styles-in-head true --browser-wait-until=domcontentloaded --browser-wait-delay=30000 --crawl-links=true --crawl-max-depth=2 --crawl-inner-links-only --crawl-replace-urls=false --crawl-remove-url-fragment=false --output-directory=/singlefiles/www2 --dump-content=false --filename-template "{url-hash}" "http://host.docker.internal:8000"
+            run: ./single-file --browser-executable-path /usr/bin/chromium-browser --filename-conflict-action=skip --block-scripts true --remove-unused-styles true --move-styles-in-head true --browser-wait-until=domcontentloaded --browser-wait-delay=30000 --crawl-links=true --crawl-max-depth=2 --crawl-inner-links-only --crawl-replace-urls=false --crawl-remove-url-fragment=false --output-directory=/singlefiles/www2 --dump-content=false --filename-template "{url-hash}-{page-title}-{url-pathname}" "http://host.docker.internal:8000"
 
       - run: ls -ahl www2
       - name: Clean up html files
