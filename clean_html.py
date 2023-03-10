@@ -186,7 +186,7 @@ class File:
     def get_save_path(self):
         """Return the path to save the file."""
         # split on the url fragment, and return the last part if it exists
-        parts = self.path.split("#")
+        parts = str(self.path).split("#")
         if len(parts) == 1:
             return self.path
         path = parts[1]

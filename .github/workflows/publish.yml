@@ -18,15 +18,15 @@ jobs:
       - uses: actions/checkout@v3
 
 
-      - name: Cache published files (temp)
-        id: cache-published-files
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-published-files
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: www
-          key: tempcache-pub
+      # - name: Cache published files (temp)
+      #   id: cache-published-files
+      #   uses: actions/cache@v3
+      #   env:
+      #     cache-name: cache-published-files
+      #   with:
+      #     # npm cache files are stored in `~/.npm` on Linux/macOS
+      #     path: www
+      #     key: tempcache-pub
 
 
       - name: Logseq Publish
@@ -60,7 +60,7 @@ jobs:
               "txt": "text/plain",
               "xml": "text/xml"
             }
-      - run: ls www/static/css
+      - run: ls -ahl www/static/css
       - run: mkdir -p www2/static/css && cp -r www/static/css/* www2/static/css
 
       # - name: Cache snapshots files (temp)
@@ -82,6 +82,7 @@ jobs:
             # no-sandbox comes from here: https://github.com/jessfraz/dockerfiles/issues/350#issuecomment-1430586061 
             run: ./single-file --browser-executable-path /usr/bin/chromium-browser --filename-conflict-action=skip --block-scripts true --remove-unused-styles true --move-styles-in-head true --browser-wait-until=domcontentloaded --browser-wait-delay=30000 --crawl-links=true --crawl-max-depth=2 --crawl-inner-links-only --crawl-replace-urls=false --crawl-remove-url-fragment=false --output-directory=/singlefiles/www2 --dump-content=false --filename-template "{url-hash}" "http://host.docker.internal:8000"
 
+      - run: ls -ahl www2
       - name: Clean up html files
         run: python -m pip install beautifulsoup4 && python clean_html.py
 
