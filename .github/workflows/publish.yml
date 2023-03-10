@@ -62,7 +62,7 @@ jobs:
             }
       - run: ls -ahl www/static/css
       - run: mkdir -p www2/static/css && cp -r www/static/css/* www2/static/css
-
+      - run: ls -ahl www2/static/css
       # - name: Cache snapshots files (temp)
       #   id: cache-snapshot-files
       #   uses: actions/cache@v3
@@ -88,7 +88,7 @@ jobs:
 
       - name: Add .nojekyll file
         run: touch www2/.nojekyll
-
+      - run: ls -ahl www2/static/css
       # - name: Copy static css to deployed folder
       #   run: mkdir -p www2/static/css && cp www/static/css/* www2/static/css
 
