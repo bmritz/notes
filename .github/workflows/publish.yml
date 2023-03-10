@@ -63,7 +63,19 @@ jobs:
             }
       - run: mkdir www2
 
-      - name: Snapshot each page
+      - name: Cache snapshots files (temp)
+        id: cache-snapshot-files
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-snapshot-files
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: www2
+          key: tempcache
+
+
+      - if: ${{ steps.cache-snapshot-files.outputs.cache-hit != 'true' }}
+        name: Snapshot each page
         uses: addnab/docker-run-action@v3
         with:
             image: capsulecode/singlefile:latest
@@ -76,6 +88,9 @@ jobs:
 
       - name: Add .nojekyll file
         run: touch www2/.nojekyll
+
+      - name: Copy static css to deployed folder
+        run: mkdir -p www2/static/css && cp -r www/static/css www2/static/css
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@4.1.9
