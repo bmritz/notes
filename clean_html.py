@@ -185,7 +185,7 @@ class File:
 
     def save(self):
         with open(self.path, "w") as fil:
-            fil.write(str(self.soup))
+            fil.write(str(self.soup.prettify()))
         logger.info(f"Saved to {self.path}")
             
             
