@@ -38,10 +38,10 @@ def change_links(a):
 # add in css
 
 def add_css_stylesheet(soup, css_path):
-        
-    style_tag = soup.new_tag('link', attrs=dict(href=css_path, rel="stylesheet", type="text/css"))
-    head = soup.select_one('head')
-    head.append(style_tag)
+    if soup is not None and soup.new_tag is not None:
+        style_tag = soup.new_tag('link', attrs=dict(href=css_path, rel="stylesheet", type="text/css"))
+        head = soup.select_one('head')
+        head.append(style_tag)
 
 def add_css_stylesheets(soup):
     paths = ["static/css/export.css","static/css/custom.css", "static/css/style.css", "static/css/tabler-icons.min.css"]
