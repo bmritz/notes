@@ -26,7 +26,7 @@ jobs:
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: www
-          key: tempcache
+          key: tempcache-published
 
 
       - if: ${{ steps.cache-published-files.outputs.cache-hit != 'true' }}
@@ -71,7 +71,7 @@ jobs:
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: www2
-          key: tempcache
+          key: tempcache-snapshot
 
 
       - if: ${{ steps.cache-snapshot-files.outputs.cache-hit != 'true' }}

@@ -211,7 +211,7 @@ def execute(work: Work, file: File):
 def read_files(dir: pathlib.Path) -> Generator[File, None, None]:
     """Yield the files from the directory, skipping subdirectories."""
     for path in dir.iterdir():
-        if path.isfile():
+        if path.is_file():
             with open(path, 'rb') as fil:
                 soup = bs4.BeautifulSoup(fil.read())
             yield File(path=path, soup=soup)
