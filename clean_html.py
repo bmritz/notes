@@ -39,6 +39,7 @@ def change_links(a):
 
 def add_css_stylesheet(soup, css_path):
     if soup is not None and hasattr(soup, 'new_tag') and soup.new_tag is not None:
+        logger.info("Adding stylesheet")
         style_tag = soup.new_tag('link', attrs=dict(href=css_path, rel="stylesheet", type="text/css"))
         head = soup.select_one('head')
         head.append(style_tag)
