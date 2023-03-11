@@ -63,15 +63,16 @@ jobs:
       - run: ls -ahl www/static/css
       - run: mkdir -p www2/static/css && cp -r www/static/css/* www2/static/css
       - run: ls -ahl www2/static/css
-      # - name: Cache snapshots files (temp)
-      #   id: cache-snapshot-files
-      #   uses: actions/cache@v3
-      #   env:
-      #     cache-name: cache-snapshot-files
-      #   with:
-      #     # npm cache files are stored in `~/.npm` on Linux/macOS
-      #     path: www2
-      #     key: tempcache-snapshot
+      
+      - name: Cache snapshots files (temp)
+        id: cache-snapshot-files
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-snapshot-files
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: www2
+          key: tempcache-snapshot3
 
 
       - name: Snapshot each page
@@ -81,14 +82,15 @@ jobs:
             options: -v ${{ github.workspace }}:/singlefiles --add-host host.docker.internal:host-gateway --cap-add=SYS_ADMIN --user 1001 
             # no-sandbox comes from here: https://github.com/jessfraz/dockerfiles/issues/350#issuecomment-1430586061 
             run: ./single-file --browser-executable-path /usr/bin/chromium-browser --filename-conflict-action=skip --insert-meta-csp=false --block-scripts=true --remove-unused-styles=false --move-styles-in-head=false --browser-wait-delay=60000 --crawl-links=true --crawl-max-depth=3 --crawl-inner-links-only=true --crawl-replace-urls=true --crawl-remove-url-fragment=false --output-directory=/singlefiles/www2 --dump-content=false --filename-template "{page-title}-{url-hash}-{url-pathname}" "http://host.docker.internal:8000"
-
-      # - run: ls -ahl www2
-      # - name: Clean up html files
-      #   run: python -m pip install beautifulsoup4 && python clean_html.py
+      
+      - run: mkdir www3 && cp -r www2/* www3/
+      - run: ls -ahl www3
+      - name: Clean up html files
+        run: python -m pip install beautifulsoup4 && python clean_html.py
 
       - name: Add .nojekyll file
-        run: touch www2/.nojekyll
-      - run: ls -ahl www2/static/css
+        run: touch www3/.nojekyll
+      - run: ls -ahl www3/static/css
       # - name: Copy static css to deployed folder
       #   run: mkdir -p www2/static/css && cp www/static/css/* www2/static/css
 
@@ -96,7 +98,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.9
         with:
           branch: gh-pages
-          folder: www2
+          folder: www3
           clean: true
           clean-exclude: |
             CNAME
@@ -106,3 +108,4 @@ jobs:
 # things I had to do
 # add --cap-add=SYS_ADMIN https://github.com/jessfraz/dockerfiles/issues/350#issuecomment-1430586061
 # add --user 1001 https://github.com/cypress-io/github-action/issues/446#issuecomment-1000542643
+# for some reason, you cannot beautify the soup

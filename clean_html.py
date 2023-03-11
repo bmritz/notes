@@ -243,4 +243,4 @@ def process_directory(directory: str):
 
 
 logging.basicConfig(level=logging.DEBUG)
-process_directory('www2')
+process_directory('www3')
