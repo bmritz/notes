@@ -4,7 +4,7 @@ import bs4
 import logging
 from dataclasses import dataclass
 from typing import Generator
-import os
+import functools
 import pathlib
 
 logger = logging.getLogger(__name__)
@@ -103,73 +103,69 @@ WORK = [
         'selector': {'name': SELF}, 
         'action': {'name': 'add-stylesheet-links'}
     },
-    {
-        # open the left menu
-        'selector': {'name': SELECT, 'kwargs': {'selector': 'main'}}, 
-        'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
-    },
-    {
-        # open the left menu
-        'selector': {'name': SELECT, 'kwargs': {'selector': '#main-container'}}, 
-        'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
-    },
-    {
-        # open the left menu
-        'selector': {'name': SELECT, 'kwargs': {'selector': '#left-sidebar'}}, 
-        'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-open'}}
-    },
-    {
-        # delete the search icon
-        'selector': {'name': SELECT, 'kwargs': {'selector': '#search-button'}}, 
-        'action': {'name': 'parent-extract'}
-    },
-    {   
-        # delete the navbar toggle icon
-        'selector': {'name': SELECT, 'kwargs': {'selector': '#left-menu'}}, 
-        'action': {'name': 'parent-extract'}
-    }, 
-    {
-        # delete the graph button
-        'selector': {'name': FIND, 'kwargs': {'name': 'a', 'string': 'Graph'}}, 
-        'action': {'name': 'extract'}
-    },
-    {
-        # delete the toolbar button
-        'selector': {'name': FIND, 'kwargs': {'name': 'button', "attrs": {"class":'toolbar-dots-btn'}}}, 
-        'action': {'name': 'extract'}
-    },
-    {
-        # delete the right sidebar button
-        'selector': {'name': FIND, 'kwargs': {'name': 'button', "attrs": {"class":'toggle-right-sidebar'}}}, 
-        'action': {'name': 'extract'}
-    },
-    {
-        # delete the home button
-        'selector': {'name': FIND, 'kwargs': {'name': 'button', "attrs": {"class": 'icon', 'title': 'Home'}}}, 
-        'action': {'name': 'extract'}
-    },
-    {
-        # delete the unlinked references if they exist
-        'selector': {'name': FIND, 'kwargs': {'name': 'div', "attrs": {"class":'page-unlinked'}}}, 
-        'action': {'name': 'extract'}
-    },
-    {
-        # delete the info button that is generated from comments
-        'selector': {'name': FIND, 'kwargs': {'string': lambda t: isinstance(t, bs4.Comment) }}, 
-        'action': {'name': 'extract'}
-    },
-    {
-        # delete the info button that is generated from comments
-        'selector': {'name': FIND, 'kwargs': {'name': 'a' }}, 
-        'action': {'name': 'change-links'}
-    },
+    # {
+    #     # open the left menu
+    #     'selector': {'name': SELECT, 'kwargs': {'selector': 'main'}}, 
+    #     'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
+    # },
+    # {
+    #     # open the left menu
+    #     'selector': {'name': SELECT, 'kwargs': {'selector': '#main-container'}}, 
+    #     'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
+    # },
+    # {
+    #     # open the left menu
+    #     'selector': {'name': SELECT, 'kwargs': {'selector': '#left-sidebar'}}, 
+    #     'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-open'}}
+    # },
+    # {
+    #     # delete the search icon
+    #     'selector': {'name': SELECT, 'kwargs': {'selector': '#search-button'}}, 
+    #     'action': {'name': 'parent-extract'}
+    # },
+    # {   
+    #     # delete the navbar toggle icon
+    #     'selector': {'name': SELECT, 'kwargs': {'selector': '#left-menu'}}, 
+    #     'action': {'name': 'parent-extract'}
+    # }, 
+    # {
+    #     # delete the graph button
+    #     'selector': {'name': FIND, 'kwargs': {'name': 'a', 'string': 'Graph'}}, 
+    #     'action': {'name': 'extract'}
+    # },
+    # {
+    #     # delete the toolbar button
+    #     'selector': {'name': FIND, 'kwargs': {'name': 'button', "attrs": {"class":'toolbar-dots-btn'}}}, 
+    #     'action': {'name': 'extract'}
+    # },
+    # {
+    #     # delete the right sidebar button
+    #     'selector': {'name': FIND, 'kwargs': {'name': 'button', "attrs": {"class":'toggle-right-sidebar'}}}, 
+    #     'action': {'name': 'extract'}
+    # },
+    # {
+    #     # delete the home button
+    #     'selector': {'name': FIND, 'kwargs': {'name': 'button', "attrs": {"class": 'icon', 'title': 'Home'}}}, 
+    #     'action': {'name': 'extract'}
+    # },
+    # {
+    #     # delete the unlinked references if they exist
+    #     'selector': {'name': FIND, 'kwargs': {'name': 'div', "attrs": {"class":'page-unlinked'}}}, 
+    #     'action': {'name': 'extract'}
+    # },
+    # {
+    #     # delete the info button that is generated from comments
+    #     'selector': {'name': FIND, 'kwargs': {'string': lambda t: isinstance(t, bs4.Comment) }}, 
+    #     'action': {'name': 'extract'}
+    # },
+    # {
+    #     # delete the info button that is generated from comments
+    #     'selector': {'name': FIND, 'kwargs': {'name': 'a' }}, 
+    #     'action': {'name': 'change-links'}
+    # },
 ]
 
-# def get_selector(piece_of_work):
-#     selector_name = piece_of_work['selector']['name']
-#     return SELECTORS[selector_name]
 
-import functools
 def get_selector(piece_of_work):
     selector_name = piece_of_work['selector']['name']
     selector_kwargs = piece_of_work['selector'].get('kwargs', {})
@@ -202,7 +198,7 @@ class File:
         save_path = self.get_save_path()
 
         with open(save_path, "w") as fil:
-            fil.write(str(self.soup.prettify()))
+            fil.write(str(self.soup))
         logger.info(f"Saved to {self.path}")
             
             
