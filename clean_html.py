@@ -94,8 +94,8 @@ WORK = [
         'action': {'name': 'extract'}
     },
     {
-        # remove the meta directive for content security policy
-        'selector': {'name': FIND, 'kwargs': {'name': 'meta', "attrs": {"http-equiv": "content-security-policy"}}}, 
+        # remove the script tags
+        'selector': {'name': FIND, 'kwargs': {'name': 'script'}}, 
         'action': {'name': 'extract'}
     },
     {
@@ -225,9 +225,9 @@ def execute(work: Work, file: File):
     return file
 
 
-def read_files(dir: pathlib.Path) -> Generator[File, None, None]:
+def read_files(directory: pathlib.Path) -> Generator[File, None, None]:
     """Yield the files from the directory, skipping subdirectories."""
-    for path in dir.iterdir():
+    for path in directory.iterdir():
         if path.is_file():
             with open(path, 'rb') as fil:
                 soup = bs4.BeautifulSoup(fil.read(), features="html.parser")
