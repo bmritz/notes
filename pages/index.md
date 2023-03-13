@@ -1,3 +1,0 @@
-- This blog is about me. You can find all posts below:
--
-- TODO: Put posts query.

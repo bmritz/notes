@@ -103,21 +103,21 @@ WORK = [
         'selector': {'name': SELF}, 
         'action': {'name': 'add-stylesheet-links'}
     },
-    # {
-    #     # open the left menu
-    #     'selector': {'name': SELECT, 'kwargs': {'selector': 'main'}}, 
-    #     'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
-    # },
-    # {
-    #     # open the left menu
-    #     'selector': {'name': SELECT, 'kwargs': {'selector': '#main-container'}}, 
-    #     'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
-    # },
-    # {
-    #     # open the left menu
-    #     'selector': {'name': SELECT, 'kwargs': {'selector': '#left-sidebar'}}, 
-    #     'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-open'}}
-    # },
+    {
+        # open the left menu
+        'selector': {'name': SELECT, 'kwargs': {'selector': 'main'}}, 
+        'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
+    },
+    {
+        # open the left menu
+        'selector': {'name': SELECT, 'kwargs': {'selector': '#main-container'}}, 
+        'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-left-sidebar-open'}}
+    },
+    {
+        # open the left menu
+        'selector': {'name': SELECT, 'kwargs': {'selector': '#left-sidebar'}}, 
+        'action': {'name': 'append-class', 'kwargs': {'class_': 'ls-open'}}
+    },
     # {
     #     # delete the search icon
     #     'selector': {'name': SELECT, 'kwargs': {'selector': '#search-button'}}, 
